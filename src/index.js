@@ -1,35 +1,45 @@
 module.exports = function check(str, bracketsConfig) {
-  
-  let string = str.split('');
-  if (string.length % 2 !== 0) {
-  	return false;
-  }
-  let expected=0;
-  let actual=0;
-  let k=0;
-  while(k!=bracketsConfig.length)
-  {
- for(let i=0; i<string.length;i++)
- {
-  if(string[i]===bracketsConfig[k][0])
-  {
 
-    expected++;
+  bracketsConfig = bracketsConfig.map((item) => {
 
-  }
-  else if(string[i]===bracketsConfig[k][1])
+    return item[0] + item[1];
+  });
+
+  let item1 = bracketsConfig[0];
+  let item2 = bracketsConfig[1];
+  let item3 = bracketsConfig[2];
+  let item4 = bracketsConfig[3];
+  let item5 = bracketsConfig[4];
+
+
+  for(let i=0; i<40;i++)
   {
-    actual++;
-   
+      if (~str.indexOf(item1)) 
+      {
+        str = str.replace(item1, "");
+      }
+      if (~str.indexOf(item2)) 
+      {
+        str = str.replace(item2, "");
+      }
+      if (~str.indexOf(item3)) 
+      {
+        str = str.replace(item3, "");
+      }
+      if (~str.indexOf(item4)) 
+      {
+        str = str.replace(item4, "");
+      }
+      if (~str.indexOf(item5)) 
+      {
+        str = str.replace(item5, "");
+      }
   }
-  // Устал переделывать программу решил обработать частный случай который у меня не проходит
-  if(str=='[(])'|| str =='|(|)' || str =='5555512575557777777555566667888888667661133833448441111222233333444442266666'|| str == '8888877878887777777888888887777777887887788788887887777777788888888887788888')
+  if (str.length <= 0)
+    return true;
   return false;
-  if(string[i-1]===bracketsConfig[k][1] && string[i]===bracketsConfig[k][0] && expected==actual)
-  return false;
- }
- k++;
-  }
- return true;
+}
+
+function remove(){
 
 }
